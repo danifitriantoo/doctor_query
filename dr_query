@@ -1,0 +1,65 @@
+USE healthyCareDB
+
+CREATE TABLE users(
+	uid INT NOT NULL IDENTITY(1, 1),
+	name VARCHAR(50) NOT NULL,
+	address VARCHAR(250) NOT NULL,
+	username VARCHAR(50) NOT NULL,
+	password VARCHAR(250) NOT NULL,
+	gender VARCHAR(10) NOT NULL,
+	status_id INT NOT NULL,
+	PRIMARY KEY (uid)
+)
+
+CREATE TABLE doctors(
+	uid INT NOT NULL IDENTITY(1, 1),
+	name VARCHAR(50) NOT NULL,
+	gender VARCHAR(10) NOT NULL,
+	specialist_id INT NOT NULL,
+	location VARCHAR(250) NOT NULL,
+	status VARCHAR(50) NOT NULL,
+	PRIMARY KEY (uid)
+)
+
+CREATE TABLE appointment(
+	uid INT NOT NULL IDENTITY(1, 1),
+	user_id INT NOT NULL,
+	type_id INT NOT NULL,
+	doctor_id INT NOT NULL,
+	createdAt INT NOT NULL,
+	deletedAt INT NOT NULL, 
+	PRIMARY KEY (uid)
+)
+
+CREATE TABLE type_consult(
+	uid INT NOT NULL IDENTITY(1, 1),
+	name VARCHAR(150) NOT NULL,
+	PRIMARY KEY (uid)
+)
+
+CREATE TABLE specialist(
+	uid INT NOT NULL IDENTITY(1, 1),
+	name VARCHAR(250) NOT NULL,
+	PRIMARY KEY (uid)
+)
+
+CREATE TABLE status_user(
+	uid INT NOT NULL IDENTITY(1, 1),
+	name VARCHAR(50) NOT NULL
+	PRIMARY KEY (uid)
+)
+
+ALTER TABLE appointment ADD 
+FOREIGN KEY (user_id) REFERENCES users(uid)
+ON DELETE CASCADE ON UPDATE CASCADE
+
+ALTER TABLE appointment ADD 
+FOREIGN KEY (type_id) REFERENCES type_consult(uid)
+ON DELETE CASCADE ON UPDATE CASCADE
+
+ALTER TABLE doctors ADD 
+FOREIGN KEY (specialist_id) REFERENCES specialist(uid)
+ON DELETE CASCADE ON UPDATE CASCADE
+
+
+GO
