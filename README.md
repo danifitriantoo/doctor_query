@@ -2,6 +2,9 @@
 
 Design Resource and Pre-Development
 
+# Untuk Model Dasar GO-Lang Rest API ada di repository GO-Lang REST API
+# Untuk Model Dasar Flutter Frontend ada di repository Flutter_(nama)
+
 &nbsp
 Entity Relation Databases
 ![HealthyCare ERD's](https://i.ibb.co/5hfZRGS/image.png)
